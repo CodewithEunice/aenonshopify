@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/******Swiperjs*******/
+.swiper {
+  width: 100%;
+}
+.swiper .swiper-slide {
+  height: auto;
+}
+
+.swiper-button-prev,
+.swiper-button-next,
+.swiper-pagination,
+.swiper-pagination-cat,
+.swiper-pagination-latestProduct,
+.swiper-pagination-phones {
+  top: unset !important;
+  left: unset !important;
+  bottom: unset !important;
+  width: auto !important;
+  right: unset !important;
+  position: unset !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 13px !important;
+  font-weight: bold;
+  color: black;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  width: 35px !important;
+  height: 35px !important;
+  margin-top: 10px !important;
+  background-color: rgb(193, 182, 182);
+}
+.swiper-button-prev,
+.swiper-button-next {
+  width: 35px !important;
+  height: 35px !important;
+  margin-top: 10px !important;
+  background-color: rgb(193, 182, 182);
+}
+
+.button-swiper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}

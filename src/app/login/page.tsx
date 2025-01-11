@@ -2,32 +2,73 @@ import React from "react";
 import Button from "@/components/button/Button";
 
 import Card from "../components/card/Card";
+import { Container } from "postcss";
+import Image from "next/image";
 
 const page = () => {
   return (
-    <main
-      className="w-full h-screen pt-10 px-5 py-10
-     bg-white"
-    >
-      <h1 className=" text-3xl font-bold">LOGIN!</h1>
-      <Button>Eunice login here</Button>
-      <p
-        className="before:content-[' '] before:w-[30px] 
-        before:h-[4px] 
-       before:bg-purple-500  before:bottom-0 before:absolute relative
-       "
-      >
-        Emma
-      </p>
-      <div className="flex">
-        <p
-          className=" after:content-[' '] after:w-[20px]
-         after:h-[20px] after:bg-red-500
-       after:rounded-full  after:absolute relative"
+    <main class="w-full min-h-screen relative flex pt-44 pb-5 md:pt-20 md:pb-0 bg-secondary-400">
+      <section class="w-full flex-1 px-5 flex items-center">
+        <div
+          class="container mx-auto px-5 py-10 rounded-2xl relative flex items-center
+          z-10 shadow-2xl bg-white"
         >
-          what the fuck!
-        </p>
-      </div>
+          <div
+            class="md:hidden w-36 h-36 pt-6 rounded-full absolute top-0 left-1/2 -translate-x-1/2 
+            -translate-y-1/2 -z-[1] text-4xl before:w-14 before:h-14 before:content-['L'] before:absolute
+            before:top-4 before:left-1/2 before:-translate-x-1/2 before:rounded-full before:border-4 before:flex 
+            before:justify-center before:items-center before:border-accent-500 font-bold 
+            text-accent-500 bg-white"
+          ></div>
+          <div class="w-[1000px] mx-auto flex gap-16 items-center">
+            <div class="hidden md:block">
+              <Image
+                src="/assets/registerGraphic1.svg"
+                width={200}
+                height={200}
+                alt="Welcome svg image"
+              />
+            </div>
+
+            <form class="flex-1 py-5 flex flex-col gap-5">
+              <h1 class="text-4xl mb-5 font-bold text-center">
+                Login <span class="text-accent-500">here</span>
+              </h1>
+              <div class="flex flex-col gap-2 mb-5">
+                <input
+                  type="text"
+                  placeholder="Enter your email"
+                  name="email"
+                  className="border-b-2 outline-none focus-visible:border-b-black"
+                />
+              </div>
+              <div class="flex flex-col gap-2 mb-5">
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  name="password"
+                  className="border-b-2 outline-none focus-visible:border-b-black"
+                />
+              </div>
+              <button
+                type="submit"
+                class="w-max px-8 py-2 rounded-full text-white bg-accent-500
+                false false false false transition-colors ease-in-out duration-300 hover:bg-opacity-70"
+              >
+                Login
+              </button>
+            </form>
+          </div>
+          <div className=" px-4 hidden md:block">
+            <Image
+              src="/assets/registerGraphic2.svg"
+              width={200}
+              height={200}
+              alt="Welcome svg image"
+            />
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

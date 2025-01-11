@@ -7,12 +7,21 @@ interface ButtonProps {
   width?: string;
   handleClick?: () => void;
   children: React.ReactNode;
+  rounded?: boolean;
 }
 
-const Button = ({ width, type, size, handleClick, children }: ButtonProps) => {
+const Button = ({
+  width,
+  type,
+  size,
+  rounded,
+  handleClick,
+  children,
+}: ButtonProps) => {
   return (
     <button
       className={` px-8 py-2 text-white  rounded-lg transition-all cursor-pointer duration-300
+       ${rounded ? "rounded-full" : "rounded-lg"}
         ${width === "full" ? "w-full" : ""}
         ${size === "big" ? "px-8 py-2" : "px-3 py-2"}
         ${type === "primary" ? "bg-primary-500 hover:bg-primary-500/80" : ""}

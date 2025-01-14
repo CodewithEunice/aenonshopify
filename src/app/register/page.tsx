@@ -6,6 +6,8 @@ import Image from "next/image";
 import Container from "@/components/container/Container";
 import Button from "@/components/button/Button";
 import * as z from "zod";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const inputWrapperStyle = "flex flex-col gap-2";
 const inputStyle = "border-b-2 outline-none focus-visible:border-b-black";
@@ -32,7 +34,17 @@ const schema = z
     path: ["confirmPassword"],
   });
 
+type RegisterDataType = z.infer<typeof schema>;
+
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterDataType>({
+    resolver: zodResolver(schema),
+  });
+
   return (
     <main className=" bg-secondary-400 ">
       <section className="w-full min-h-screen  py-[120px] flex-1 px-5 flex items-center">
@@ -50,7 +62,10 @@ const Register = () => {
                   alt="Welcome svg image"
                 />
               </div>
-              <form className="flex-1 py-5 flex flex-col gap-5">
+              <form
+                onSubmit={handleSubmit(onsubmit)}
+                className="flex-1 py-5 flex flex-col gap-5"
+              >
                 <h1 className=" text-2xl md:text-4xl font-bold text-center">
                   Register <span className="text-accent-500">here</span>
                 </h1>
@@ -58,43 +73,69 @@ const Register = () => {
                   <input
                     type="text"
                     placeholder="Enter your name"
+                    {...register("name")}
                     className={inputStyle}
                   />
+                  {errors.name && (
+                    <p className={errorStyle}>{errors.name?.message}</p>
+                  )}
                 </div>
                 <div className={inputWrapperStyle}>
                   <input
                     type="text"
                     placeholder="Enter your email"
+                    {...register("email")}
                     className={inputStyle}
                   />
+                  {errors.email && (
+                    <p className={errorStyle}>{errors.email?.message}</p>
+                  )}
                 </div>
                 <div class={inputWrapperStyle}>
                   <input
                     type="password"
                     placeholder="Enter your password"
+                    {...register("password")}
                     className={inputStyle}
                   />
+                  {errors.password && (
+                    <p className={errorStyle}>{errors.password?.message}</p>
+                  )}
                 </div>
                 <div class={inputWrapperStyle}>
                   <input
                     type="password"
                     placeholder="Confirm your password"
+                    {...register("confirmPassword")}
                     className={inputStyle}
                   />
+                  {errors.confirmPassword && (
+                    <p className={errorStyle}>
+                      {errors.confirmPassword?.message}
+                    </p>
+                  )}
                 </div>
                 <div className={inputWrapperStyle}>
                   <input
                     type="tel"
                     placeholder="Enter your phone"
+                    {...register("phoneNumber")}
                     className={inputStyle}
                   />
+                  {errors.phoneNumber && (
+                    <p className={errorStyle}>{errors.phoneNumber?.message}</p>
+                  )}
                 </div>
                 <div className={inputWrapperStyle}>
                   <input
                     type="text"
                     placeholder="Enter your address"
+                    {...register("address")}
                     className={inputStyle}
                   />
+                  {errors.address && (
+                    <p className={errorStyle}>{errors.address?.message}</p>
+                  )}
                 </div>
                 <div>
                   <Button type="accent" size="big" rounded>
